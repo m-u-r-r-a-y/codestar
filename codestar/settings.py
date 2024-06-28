@@ -19,7 +19,8 @@ if os.path.isfile('env.py'):
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -87,8 +88,11 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
  #   }
 # }
 
+database_url = os.environ.get('DATABASE_URL')
+print(f"DATABASE_URL: {database_url} (type: {type(database_url)})")
+
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(database_url)
 }
 
 CSRF_TRUSTED_ORIGINS = [
@@ -135,6 +139,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+static_path = os.path.join(BASE_DIR, 'static')
+print(f"STATICFILES_DIRS: {static_path} (exists: {os.path.exists(static_path)})")
+
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
