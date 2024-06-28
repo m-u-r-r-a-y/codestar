@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("postgres://uyzak9lm6ok:OwADIUeOQahy@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/mate_stock_sixth_452358"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 CSRF_TRUSTED_ORIGINS = [
