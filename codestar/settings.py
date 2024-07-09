@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-b^8qsg0xyga%(p7^rj&4$0uqh6*4vgn*akui51eda=!9*sv(5('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 
@@ -94,7 +94,7 @@ database_url = os.environ.get('DATABASE_URL')
 print(f"DATABASE_URL: {database_url} (type: {type(database_url)})")
 
 DATABASES = {
-    'default': dj_database_url.parse(database_url)
+    'default' : dj_database_url.config(default='postgres://localhost')
 }
 
 CSRF_TRUSTED_ORIGINS = [
